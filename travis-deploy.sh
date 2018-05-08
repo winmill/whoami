@@ -28,6 +28,11 @@ if [ "$ARCH" == "amd64" ]; then
     sleep 15
     echo "Try again"
   done
+  until docker run --rm stefanscherer/winspector "$image:windows-amd64-$TRAVIS_TAG-1803"
+  do
+    sleep 15
+    echo "Try again"
+  done
   set -e
 
   echo "Pushing manifest $image:$TRAVIS_TAG"
@@ -36,7 +41,8 @@ if [ "$ARCH" == "amd64" ]; then
     "$image:linux-arm-$TRAVIS_TAG" \
     "$image:linux-arm64-$TRAVIS_TAG" \
     "$image:windows-amd64-$TRAVIS_TAG" \
-    "$image:windows-amd64-$TRAVIS_TAG-1709"
+    "$image:windows-amd64-$TRAVIS_TAG-1709" \
+    "$image:windows-amd64-$TRAVIS_TAG-1803"
   docker manifest annotate "$image:$TRAVIS_TAG" "$image:linux-arm-$TRAVIS_TAG" --os linux --arch arm --variant v6
   docker manifest annotate "$image:$TRAVIS_TAG" "$image:linux-arm64-$TRAVIS_TAG" --os linux --arch arm64 --variant v8
   docker manifest push "$image:$TRAVIS_TAG"
@@ -47,7 +53,8 @@ if [ "$ARCH" == "amd64" ]; then
     "$image:linux-arm-$TRAVIS_TAG" \
     "$image:linux-arm64-$TRAVIS_TAG" \
     "$image:windows-amd64-$TRAVIS_TAG" \
-    "$image:windows-amd64-$TRAVIS_TAG-1709"
+    "$image:windows-amd64-$TRAVIS_TAG-1709" \
+    "$image:windows-amd64-$TRAVIS_TAG-1803"
   docker manifest annotate "$image:latest" "$image:linux-arm-$TRAVIS_TAG" --os linux --arch arm --variant v6
   docker manifest annotate "$image:latest" "$image:linux-arm64-$TRAVIS_TAG" --os linux --arch arm64 --variant v8
   docker manifest push "$image:latest"
