@@ -18,3 +18,10 @@ rebase-docker-image `
   stefanscherer/whoami:windows-amd64-$env:APPVEYOR_REPO_TAG_NAME `
   -t stefanscherer/whoami:windows-amd64-$env:APPVEYOR_REPO_TAG_NAME-1709 `
   -b microsoft/nanoserver:1709
+
+Write-Host Rebasing image to produce 1803 variant
+npm install -g rebase-docker-image
+rebase-docker-image `
+  stefanscherer/whoami:windows-amd64-$env:APPVEYOR_REPO_TAG_NAME `
+  -t stefanscherer/whoami:windows-amd64-$env:APPVEYOR_REPO_TAG_NAME-1803 `
+  -b microsoft/nanoserver:1803
