@@ -1,7 +1,6 @@
 # whoami multi-arch image
 
 [![Build status](https://ci.appveyor.com/api/projects/status/bhma7tmx0eje73ao/branch/master?svg=true)](https://ci.appveyor.com/project/StefanScherer/whoami/branch/master)
-[![Build Status](https://travis-ci.org/StefanScherer/whoami.svg?branch=master)](https://travis-ci.org/StefanScherer/whoami)
 [![This image on DockerHub](https://img.shields.io/docker/pulls/stefanscherer/whoami.svg)](https://hub.docker.com/r/stefanscherer/whoami/)
 
 Simple HTTP docker service that prints it's container ID - for (almost) any Docker platform
@@ -11,15 +10,16 @@ Simple HTTP docker service that prints it's container ID - for (almost) any Dock
 ![CI pipeline with Travis and AppVeyor](images/pipeline.png)
 
 * AppVeyor CI
-  * Build Windows image for nanoserver 2016 SAC
-    * windows/amd64 10.0.14393.x
-  * Rebase this image to nanoserver:1709 SAC
-    * windows/amd64 10.0.16299.x
-* Travis CI
   * Matrix build for several Linux architectures
     * linux/amd64
     * linux/arm
     * linux/arm64
+  * Build Windows image for nanoserver 2016 SAC
+    * windows/amd64 10.0.14393.x
+    * Rebase this image to nanoserver:1709 SAC
+      * windows/amd64 10.0.16299.x
+    * Rebase this image to nanoserver:1803 SAC
+      * windows/amd64 10.0.17134.x
   * Wait for all images to be on Docker Hub
   * Create and push the manifest list
     * preview of `docker manifest` command
@@ -54,6 +54,7 @@ Image: stefanscherer/whoami
    - linux/amd64
    - linux/arm/v6
    - linux/arm64/v8
-   - windows/amd64:10.0.14393.2068
-   - windows/amd64:10.0.16299.248
+   - windows/amd64:10.0.14393.2248
+   - windows/amd64:10.0.16299.431
+   - windows/amd64:10.0.17134.48
 ```

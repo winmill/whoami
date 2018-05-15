@@ -1,5 +1,10 @@
 Write-Host Starting test
 
+if ($env:ARCH -ne "amd64") {
+  Write-Host "Arch $env:ARCH detected. Skip testing."
+  exit 0
+}
+
 $ErrorActionPreference = 'SilentlyContinue';
 docker kill whoamitest
 docker rm -f whoamitest
