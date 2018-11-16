@@ -3,11 +3,11 @@ image:
 - Ubuntu
   #- Visual Studio 2017
 
-environment:
+#environment:
   #matrix:
   #  - ARCH: arm
   #  - ARCH: arm64
-  - ARCH: amd64
+  #  - ARCH: amd64
 
   #matrix:
   #exclude:
